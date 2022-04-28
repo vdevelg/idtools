@@ -1,0 +1,30 @@
+{
+    "version": 1,
+    "formatters": {
+        "detailed": {
+            "format": "%(asctime)s {{sep}} %(name)s:%(lineno)d {{sep}} %(levelname)s {{sep}} %(message)s"
+        }
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "level": "DEBUG",
+            "formatter": "detailed"
+        },
+        "file": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "level": "INFO",
+            "formatter": "detailed",
+            "filename": "{{log_file}}",
+            "maxBytes": 1048576,
+            "backupCount": 33,
+            "encoding": "utf-8"
+        }
+    },
+    "loggers": {
+        "{{app_name}}": {
+            "handlers": ["console", "file"],
+            "level": "DEBUG"
+        }
+    }
+}
